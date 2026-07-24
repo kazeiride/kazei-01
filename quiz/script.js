@@ -812,7 +812,7 @@
   ========================================================================== */
 
   /** Hoàn tất quiz: tính điểm, phân loại, build profile, lưu trữ, hiển thị kết quả. */
-  function finishQuiz() {
+   async function finishQuiz() {
     recalculateScores();
     const classification = classifyPersonality(state.scores);
     const travelerProfile = buildTravelerProfile(classification);
