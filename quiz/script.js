@@ -28,7 +28,7 @@
      CONFIG LUCAS THÊM
   ========================================================================== */
 
-  const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxl_vVOmskSazkaF7PEuK27KeeGbF5GNlpBct50WRUMverCWYLcuFyob_39wW3GtXPWQw/exec";
+  const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzufX-6qX0SXyYgH8Y3cSDL7s85LvaKb1nugpnGfXaDvwzZTGzy20olSyAD7oApLYfm7g/exec";
 
   /* ==========================================================================
      1. DATA LAYER
