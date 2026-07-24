@@ -837,19 +837,17 @@
   try {
     const response = await fetch(GOOGLE_SCRIPT_URL, {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
       body: JSON.stringify(profile),
+      redirect: "follow",
     });
 
-    const result = await response.json();
+    const text = await response.text();
 
-    console.log("Google Sheet:", result);
-    } catch (err) {
+    console.log("Google Sheet:", text);
+  } catch (err) {
     console.error("Không thể gửi dữ liệu lên Google Sheet:", err);
-    }
   }
+}
 
 
 
