@@ -1,37 +1,646 @@
-body {
-  font-family: Arial, sans-serif;
-  background: #0f0f0f;
-  color: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
+/* ============================================================================
+   KAZEI — TRAVEL PERSONALITY QUIZ — STYLESHEET
+   ----------------------------------------------------------------------------
+   Cấu trúc file:
+   1. Design tokens (biến CSS: màu sắc, bo góc, đổ bóng, easing...)
+   2. Reset & base
+   3. Layout chung (app shell, header)
+   4. Screens & transitions (intro / quiz / result)
+   5. Component: Intro card
+   6. Component: Quiz progress + section header
+   7. Component: Question + Options
+   8. Component: Buttons
+   9. Component: Result card + progress bars
+   10. Responsive (desktop breakpoints — mobile-first)
+============================================================================ */
+
+/* ---------------------------------------------------------------------------
+   1. DESIGN TOKENS
+--------------------------------------------------------------------------- */
+:root {
+  /* Màu nền / chữ — trắng, đen, xám nhạt */
+  --color-bg: #ffffff;
+  --color-surface: #f7f7f5;
+  --color-surface-alt: #f0efec;
+  --color-border: #e7e6e2;
+
+  --color-ink: #17181a;
+  --color-ink-soft: #5b5d61;
+  --color-ink-faint: #9a9b9e;
+
+  /* Accent color thương hiệu Kazei */
+  --color-accent: #3e6c68;
+  --color-accent-dark: #2c4d4a;
+  --color-accent-soft: #e6edec;
+
+  /* Bo góc */
+  --radius-lg: 28px;
+  --radius-md: 18px;
+  --radius-sm: 12px;
+  --radius-pill: 999px;
+
+  /* Đổ bóng rất nhẹ */
+  --shadow-soft: 0 1px 2px rgba(23, 24, 26, 0.04), 0 12px 32px rgba(23, 24, 26, 0.06);
+  --shadow-card: 0 2px 4px rgba(23, 24, 26, 0.04), 0 20px 48px rgba(23, 24, 26, 0.08);
+
+  /* Easing chuyển động mềm mại kiểu Apple */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --duration-fast: 180ms;
+  --duration-base: 320ms;
+  --duration-slow: 520ms;
+
+  /* Khoảng cách */
+  --space-page: 20px;
 }
 
-.container {
-  max-width: 500px;
-  width: 100%;
-  text-align: center;
+/* ---------------------------------------------------------------------------
+   2. RESET & BASE
+--------------------------------------------------------------------------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--color-bg);
+  color: var(--color-ink);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Inter", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, p {
+  margin: 0;
 }
 
 button {
-  margin-top: 20px;
-  padding: 10px 20px;
+  font-family: inherit;
   cursor: pointer;
 }
 
-.answer {
-  display: block;
-  margin: 10px 0;
-  padding: 10px;
-  background: #1f1f1f;
-  cursor: pointer;
+input {
+  font-family: inherit;
 }
 
-.answer.selected {
-  background: #4caf50;
+/* Tôn trọng người dùng muốn giảm hiệu ứng chuyển động */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
 }
 
-.hidden {
+/* Focus visible rõ ràng cho điều hướng bàn phím */
+button:focus-visible,
+input:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+/* ---------------------------------------------------------------------------
+   3. LAYOUT CHUNG
+--------------------------------------------------------------------------- */
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-header {
+  padding: 20px var(--space-page);
+  flex-shrink: 0;
+}
+
+.logo {
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-ink);
+}
+
+.app-main {
+  flex: 1;
+  display: flex;
+  padding: 0 var(--space-page) 48px;
+}
+
+/* ---------------------------------------------------------------------------
+   4. SCREENS & TRANSITIONS
+--------------------------------------------------------------------------- */
+.screen {
   display: none;
+  width: 100%;
+  margin: auto;
+  animation: screen-in var(--duration-slow) var(--ease-out);
+}
+
+.screen.is-active {
+  display: flex;
+  justify-content: center;
+}
+
+@keyframes screen-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   5. COMPONENT: INTRO CARD
+--------------------------------------------------------------------------- */
+.intro-card {
+  width: 100%;
+  max-width: 440px;
+  padding: 40px 28px;
+  background: var(--color-bg);
+  text-align: left;
+}
+
+.intro-eyebrow {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-bottom: 18px;
+}
+
+.intro-title {
+  font-size: 30px;
+  font-weight: 650;
+  letter-spacing: -0.01em;
+  line-height: 1.25;
+  color: var(--color-ink);
+  margin-bottom: 18px;
+}
+
+.intro-text {
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--color-ink-soft);
+  margin-bottom: 36px;
+}
+
+.intro-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.intro-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-ink);
+  margin-bottom: 2px;
+}
+
+.intro-input {
+  width: 100%;
+  padding: 16px 18px;
+  font-size: 16px;
+  color: var(--color-ink);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  transition: border-color var(--duration-fast) var(--ease-out), background var(--duration-fast) var(--ease-out);
+}
+
+.intro-input::placeholder {
+  color: var(--color-ink-faint);
+}
+
+.intro-input:focus {
+  outline: none;
+  border-color: var(--color-accent);
+  background: var(--color-bg);
+}
+
+/* ---------------------------------------------------------------------------
+   6. COMPONENT: QUIZ PROGRESS + SECTION HEADER
+--------------------------------------------------------------------------- */
+.quiz-shell {
+  width: 100%;
+  max-width: 560px;
+  padding: 8px 4px 0;
+}
+
+.quiz-progress {
+  margin-bottom: 32px;
+}
+
+.quiz-progress__meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 10px;
+  font-size: 13px;
+}
+
+.quiz-progress__part {
+  font-weight: 600;
+  color: var(--color-accent);
+  letter-spacing: 0.02em;
+}
+
+.quiz-progress__count {
+  color: var(--color-ink-faint);
+}
+
+.quiz-progress__track {
+  width: 100%;
+  height: 6px;
+  background: var(--color-surface-alt);
+  border-radius: var(--radius-pill);
+  overflow: hidden;
+}
+
+.quiz-progress__fill {
+  height: 100%;
+  width: 0%;
+  background: var(--color-accent);
+  border-radius: var(--radius-pill);
+  transition: width var(--duration-slow) var(--ease-out);
+}
+
+.quiz-section-header {
+  margin-bottom: 28px;
+}
+
+.quiz-section-header h2 {
+  font-size: 22px;
+  font-weight: 650;
+  letter-spacing: -0.01em;
+  color: var(--color-ink);
+  margin-bottom: 6px;
+}
+
+.quiz-section-header p {
+  font-size: 14px;
+  color: var(--color-ink-soft);
+}
+
+/* ---------------------------------------------------------------------------
+   7. COMPONENT: QUESTION + OPTIONS
+--------------------------------------------------------------------------- */
+.quiz-question {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity var(--duration-base) var(--ease-out), transform var(--duration-base) var(--ease-out);
+}
+
+.quiz-question.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.question-text {
+  font-size: 19px;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--color-ink);
+  margin-bottom: 8px;
+}
+
+.question-helper {
+  font-size: 13px;
+  color: var(--color-accent);
+  font-weight: 500;
+  margin-bottom: 18px;
+}
+
+.question-text + .options-list {
+  margin-top: 20px;
+}
+
+.options-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.option-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  padding: 16px 18px;
+  background: var(--color-surface);
+  border: 1px solid transparent;
+  border-radius: var(--radius-md);
+  text-align: left;
+  transition: background var(--duration-fast) var(--ease-out),
+              border-color var(--duration-fast) var(--ease-out),
+              transform var(--duration-fast) var(--ease-out);
+}
+
+.option-card:hover {
+  background: var(--color-surface-alt);
+}
+
+.option-card:active {
+  transform: scale(0.99);
+}
+
+.option-card.is-selected {
+  background: var(--color-accent-soft);
+  border-color: var(--color-accent);
+}
+
+.option-card.is-disabled {
+  opacity: 0.45;
+  pointer-events: none;
+}
+
+.option-indicator {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  border: 1.5px solid var(--color-ink-faint);
+  transition: border-color var(--duration-fast) var(--ease-out), background var(--duration-fast) var(--ease-out);
+  position: relative;
+}
+
+.option-indicator--radio {
+  border-radius: 50%;
+}
+
+.option-indicator--checkbox {
+  border-radius: 6px;
+}
+
+.option-card.is-selected .option-indicator {
+  border-color: var(--color-accent);
+  background: var(--color-accent);
+}
+
+.option-card.is-selected .option-indicator--radio::after {
+  content: '';
+  position: absolute;
+  inset: 4px;
+  border-radius: 50%;
+  background: #ffffff;
+}
+
+.option-card.is-selected .option-indicator--checkbox::after {
+  content: '';
+  position: absolute;
+  left: 5px;
+  top: 1px;
+  width: 6px;
+  height: 11px;
+  border-right: 2px solid #ffffff;
+  border-bottom: 2px solid #ffffff;
+  transform: rotate(45deg);
+}
+
+.option-label {
+  font-size: 15px;
+  color: var(--color-ink);
+  line-height: 1.4;
+}
+
+/* ---------------------------------------------------------------------------
+   8. COMPONENT: BUTTONS
+--------------------------------------------------------------------------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px 24px;
+  font-size: 15px;
+  font-weight: 600;
+  border: none;
+  border-radius: var(--radius-pill);
+  transition: background var(--duration-fast) var(--ease-out),
+              color var(--duration-fast) var(--ease-out),
+              transform var(--duration-fast) var(--ease-out),
+              opacity var(--duration-fast) var(--ease-out);
+}
+
+.btn:active {
+  transform: scale(0.97);
+}
+
+.btn--primary {
+  background: var(--color-accent);
+  color: #ffffff;
+  box-shadow: var(--shadow-soft);
+}
+
+.btn--primary:hover:not(:disabled) {
+  background: var(--color-accent-dark);
+}
+
+.btn--primary:disabled {
+  background: var(--color-surface-alt);
+  color: var(--color-ink-faint);
+  box-shadow: none;
+  cursor: not-allowed;
+}
+
+.btn--ghost {
+  background: transparent;
+  color: var(--color-ink-soft);
+}
+
+.btn--ghost:hover:not(:disabled) {
+  background: var(--color-surface);
+  color: var(--color-ink);
+}
+
+.btn--ghost:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.btn--full {
+  width: 100%;
+}
+
+.quiz-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 36px;
+}
+
+.result-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 28px;
+}
+
+/* ---------------------------------------------------------------------------
+   9. COMPONENT: RESULT CARD + PROGRESS BARS
+--------------------------------------------------------------------------- */
+.result-shell {
+  width: 100%;
+  max-width: 480px;
+}
+
+.result-card {
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 40px 28px;
+  box-shadow: var(--shadow-card);
+  animation: card-pop var(--duration-slow) var(--ease-out);
+}
+
+@keyframes card-pop {
+  from {
+    opacity: 0;
+    transform: scale(0.97) translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.result-greeting {
+  font-size: 14px;
+  color: var(--color-ink-soft);
+  margin-bottom: 24px;
+}
+
+.result-badge {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.result-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: var(--color-accent-soft);
+  color: var(--color-accent);
+  margin-bottom: 18px;
+}
+
+.result-icon svg {
+  width: 32px;
+  height: 32px;
+}
+
+.result-name-vi {
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--color-ink);
+  margin-bottom: 4px;
+}
+
+.result-name-en {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+
+.result-description {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--color-ink-soft);
+  text-align: left;
+  margin-bottom: 32px;
+}
+
+.result-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding-top: 24px;
+  border-top: 1px solid var(--color-border);
+}
+
+.bar-row__meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-ink);
+  margin-bottom: 8px;
+}
+
+.bar-track {
+  width: 100%;
+  height: 8px;
+  background: var(--color-surface-alt);
+  border-radius: var(--radius-pill);
+  overflow: hidden;
+}
+
+.bar-fill {
+  height: 100%;
+  width: 0%;
+  background: var(--color-accent);
+  border-radius: var(--radius-pill);
+  transition: width 900ms var(--ease-out);
+}
+
+/* ---------------------------------------------------------------------------
+   10. RESPONSIVE — DESKTOP (mobile-first, mở rộng dần lên)
+--------------------------------------------------------------------------- */
+@media (min-width: 640px) {
+  :root {
+    --space-page: 32px;
+  }
+
+  .app-main {
+    padding-bottom: 80px;
+  }
+
+  .intro-card {
+    padding: 56px 48px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-card);
+    margin-top: 40px;
+  }
+
+  .intro-title {
+    font-size: 36px;
+  }
+
+  .quiz-shell {
+    padding: 40px 40px 0;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-card);
+    margin-top: 24px;
+    padding-bottom: 40px;
+  }
+
+  .result-card {
+    padding: 52px 48px;
+  }
+}
+
+@media (min-width: 960px) {
+  .app-header {
+    padding: 32px 48px;
+  }
 }
