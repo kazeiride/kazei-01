@@ -833,24 +833,22 @@
   /* ==========================================================================
      FUNCTION LUCAS THÊM
   ========================================================================== */
-  async function submitTravelerProfile(profile) {
+ async function submitTravelerProfile(profile) {
   try {
     const formData = new FormData();
-   formData.append("data", JSON.stringify(profile));
+    formData.append("data", JSON.stringify(profile));
 
-   const response = await fetch(GOOGLE_SCRIPT_URL, {
-  method: "POST",
-  body: formData
-});
+    await fetch(GOOGLE_SCRIPT_URL, {
+      method: "POST",
+      mode: "no-cors",
+      body: formData
+    });
 
-    const text = await response.text();
-
-    console.log("Google Sheet:", text);
+    console.log("Đã gửi dữ liệu lên Google Sheet");
   } catch (err) {
     console.error("Không thể gửi dữ liệu lên Google Sheet:", err);
   }
 }
-
 
 
   function init() {
