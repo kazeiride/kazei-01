@@ -512,6 +512,10 @@
       travelHistory: profileData.travelHistory,
       bestMemories: profileData.bestMemories,
       avoidList: profileData.avoidList,
+      submittedAt: new Date().toLocaleString("vi-VN", {
+        timeZone: "Asia/Ho_Chi_Minh",
+        hour12: false
+})
     };
   }
 
