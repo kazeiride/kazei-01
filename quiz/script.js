@@ -835,11 +835,13 @@
   ========================================================================== */
   async function submitTravelerProfile(profile) {
   try {
-    const response = await fetch(GOOGLE_SCRIPT_URL, {
-      method: "POST",
-      body: JSON.stringify(profile),
-      redirect: "follow",
-    });
+    const formData = new FormData();
+   formData.append("data", JSON.stringify(profile));
+
+   const response = await fetch(GOOGLE_SCRIPT_URL, {
+  method: "POST",
+  body: formData
+});
 
     const text = await response.text();
 
