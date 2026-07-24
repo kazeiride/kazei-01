@@ -512,7 +512,6 @@
       travelHistory: profileData.travelHistory,
       bestMemories: profileData.bestMemories,
       avoidList: profileData.avoidList,
-      submittedAt: ""
     };
   }
 
