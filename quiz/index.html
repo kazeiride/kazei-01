@@ -1,24 +1,104 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Kazei Quiz</title>
-  <link rel="stylesheet" href="./style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Kazei — Travel Personality Quiz</title>
+  <meta name="description" content="Kazei giúp bạn khám phá phong cách du lịch của riêng mình trước khi thiết kế một hành trình thật sự dành riêng cho bạn." />
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-  <div class="container">
-    <h1>Find Your Travel Vibe</h1>
-    <p id="question">Loading...</p>
+  <div class="app">
 
-    <div id="answers"></div>
+    <!-- ======================= HEADER ======================= -->
+    <header class="app-header">
+      <div class="logo">Kazei</div>
+    </header>
 
-    <button id="nextBtn">Next</button>
+    <main class="app-main">
 
-    <div id="result" class="hidden"></div>
+      <!-- ======================= MÀN HÌNH MỞ ĐẦU ======================= -->
+      <section class="screen screen--intro" id="screen-intro" data-screen="intro">
+        <div class="intro-card">
+          <span class="intro-eyebrow">Kazei · Travel Personality</span>
+          <h1 class="intro-title">Trước khi cùng nhau lên đường...</h1>
+          <p class="intro-text">
+            Mỗi người đều có một cách tận hưởng du lịch rất khác nhau.
+            Chỉ mất khoảng 2 phút, Kazei sẽ hiểu bạn hơn để sau này tạo nên
+            một hành trình thật sự dành riêng cho bạn.
+          </p>
+
+          <div class="intro-form">
+            <label class="intro-label" for="input-name">Tên của bạn</label>
+            <input
+              class="intro-input"
+              type="text"
+              id="input-name"
+              placeholder="Ví dụ: Minh"
+              autocomplete="off"
+            />
+            <button class="btn btn--primary btn--full" id="btn-start" type="button" disabled>
+              Bắt đầu
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================= MÀN HÌNH QUIZ ======================= -->
+      <section class="screen screen--quiz" id="screen-quiz" data-screen="quiz">
+        <div class="quiz-shell">
+
+          <!-- Thanh tiến trình -->
+          <div class="quiz-progress">
+            <div class="quiz-progress__meta">
+              <span class="quiz-progress__part" id="quiz-part-label">Phần 1</span>
+              <span class="quiz-progress__count" id="quiz-count-label">Câu 1/18</span>
+            </div>
+            <div class="quiz-progress__track">
+              <div class="quiz-progress__fill" id="quiz-progress-fill"></div>
+            </div>
+          </div>
+
+          <!-- Tiêu đề của từng phần -->
+          <div class="quiz-section-header">
+            <h2 id="quiz-section-title">Bạn là kiểu người du lịch nào?</h2>
+            <p id="quiz-section-desc">Hãy chọn phương án gần với bạn nhất.</p>
+          </div>
+
+          <!-- Nội dung câu hỏi (render động bằng JS) -->
+          <div class="quiz-question" id="quiz-question-container"></div>
+
+          <!-- Điều hướng -->
+          <div class="quiz-nav">
+            <button class="btn btn--ghost" id="btn-prev" type="button">Quay lại</button>
+            <button class="btn btn--primary" id="btn-next" type="button" disabled>Tiếp tục</button>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ======================= MÀN HÌNH KẾT QUẢ ======================= -->
+      <section class="screen screen--result" id="screen-result" data-screen="result">
+        <div class="result-shell">
+
+          <div class="result-card" id="result-card">
+            <!-- Nội dung được render động bằng JS -->
+          </div>
+
+          <div class="result-actions">
+            <button class="btn btn--ghost" id="btn-retake" type="button">Làm lại Quiz</button>
+            <button class="btn btn--primary" id="btn-download" type="button">Tải kết quả</button>
+          </div>
+
+        </div>
+      </section>
+
+    </main>
   </div>
 
-  <script src="./script.js"></script>
+  <!-- Thư viện chụp ảnh kết quả (chỉ dùng cho tính năng "Tải kết quả") -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
