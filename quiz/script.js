@@ -778,33 +778,38 @@
     showScreen('intro');
   });
 
-  dom.btnDownload.addEventListener('click', () => {
-    if (typeof html2canvas === 'undefined') {
-      alert('Không thể tải ảnh lúc này. Vui lòng thử lại sau.');
-      return;
-    }
-    dom.btnDownload.disabled = true;
-    dom.btnDownload.textContent = 'Đang tạo ảnh...';
+dom.btnDownload.addEventListener('click', () => {
+  if (typeof html2canvas === 'undefined') {
+    alert('Không thể tải ảnh lúc này. Vui lòng thử lại sau.');
+    return;
+  }
+  dom.btnDownload.disabled = true;
+  dom.btnDownload.textContent = 'Đang tạo ảnh...';
 
-    html2canvas(dom.resultCard, {
-      backgroundColor: '#ffffff',
-      scale: 2,
-      useCORS: true
+  html2canvas(dom.resultCard, {
+    backgroundColor: '#ffffff',
+    scale: 2,
+    useCORS: true,
+    onclone: (clonedDoc) => {
+      // Cho clone DOM có thời gian ổn định trước khi render
+      return new Promise(resolve => setTimeout(resolve, 500));
+    }
+  })
+    .then((canvas) => {
+      const link = document.createElement('a');
+      link.download = 'kazei-travel-personality.png';
+      link.href = canvas.toDataURL('image/png');
+      link.click();
     })
-      .then((canvas) => {
-        const link = document.createElement('a');
-        link.download = 'kazei-travel-personality.png';
-        link.href = canvas.toDataURL('image/png');
-        link.click();
-      })
-      .catch(() => {
-        alert('Đã có lỗi khi tạo ảnh kết quả. Vui lòng thử lại.');
-      })
-      .finally(() => {
-        dom.btnDownload.disabled = false;
-        dom.btnDownload.textContent = 'Tải kết quả';
-      });
-  });
+    .catch(() => {
+      alert('Đã có lỗi khi tạo ảnh kết quả. Vui lòng thử lại.');
+    })
+    .finally(() => {
+      dom.btnDownload.disabled = false;
+      dom.btnDownload.textContent = 'Tải kết quả';
+    });
+});
+
 
   /* ==========================================================================
      6. INIT
