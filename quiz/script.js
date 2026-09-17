@@ -298,7 +298,7 @@
       nameVI: 'Nhà Thám Hiểm',
       nameEN: 'The Explorer',
       essence: 'luôn muốn bước ra khỏi vùng quen thuộc để khám phá điều mới',
-      icon: '<img src="images/explorer.png" alt="Explorer Icon" class="icon">',
+      icon: '<img src="quiz/images/explorer.png" alt="Explorer Icon" class="icon">',
       description:
         'Bạn là người luôn muốn bước ra khỏi vùng an toàn để khám phá những điều mới mẻ. Với bạn, một chuyến đi đúng nghĩa là khi được đi bộ qua những con phố lạ, thử món ăn chưa từng nếm, và bắt chuyện với những người bạn chưa từng gặp. Bạn không ngại dậy sớm để đón bình minh, không ngại đi xa hơn một chút nếu điều đó đồng nghĩa với một trải nghiệm đáng nhớ. Bạn thích lịch trình đủ dày để không bỏ lỡ điều gì, nhưng vẫn giữ được sự tò mò để đón nhận những bất ngờ dọc đường. Với bạn, thành công của một chuyến đi được đo bằng số điều mới học được và những câu chuyện sẽ kể lại sau này. Kazei sẽ thiết kế một hành trình đủ phong phú để nuôi dưỡng sự tò mò không ngừng nghỉ của bạn.'
     },
@@ -307,7 +307,7 @@
       nameVI: 'Người Sống Chậm',
       nameEN: 'The Reflector',
       essence: 'tìm kiếm sự bình yên và muốn sống chậm lại',
-      icon: '<img src="images/reflector.png" alt="Reflector Icon" class="icon">',
+      icon: '<img src="quiz/images/reflector.png" alt="Reflector Icon" class="icon">',
       description:
         'Bạn là người tìm đến du lịch không phải để chạy đua với thời gian, mà để tìm lại nhịp thở của chính mình. Một buổi sáng ngồi yên bên tách cà phê, ngắm nhìn thành phố thức giấc, đã đủ để bạn thấy trọn vẹn. Bạn không cần đi thật nhiều nơi, chỉ cần mỗi khoảnh khắc đều được sống chậm và không vội vã. Với bạn, một chuyến đi thành công là khi tâm trí được nghỉ ngơi thật sự, khi những lo toan thường ngày tạm được gác lại, và khi bạn cảm nhận được sự kết nối sâu sắc hơn với người đồng hành. Bạn thích những lịch trình có khoảng trống, để có thể chậm lại bất cứ khi nào cần. Kazei sẽ thiết kế một hành trình đủ nhẹ nhàng, đủ tĩnh lặng, để bạn thật sự được chữa lành sau mỗi chuyến đi.'
     },
@@ -316,7 +316,7 @@
       nameVI: 'Người Kiến Tạo',
       nameEN: 'The Creator',
       essence: 'thích tự do lựa chọn và tạo nên dấu ấn riêng',
-      icon: '<img src="images/creator.png" alt="Creator Icon" class="icon">',
+      icon: '<img src="quiz/images/creator.png" alt="Creator Icon" class="icon">',
       description:
         'Bạn là người thích tự viết nên câu chuyện du lịch của riêng mình, thay vì đi theo một khuôn mẫu có sẵn. Bạn thoải mái với sự thay đổi, thích những lịch trình đủ mở để có thể tùy hứng rẽ sang một hướng khác nếu cảm thấy phù hợp. Với bạn, một chuyến đi đáng nhớ không nằm ở việc đi được bao nhiêu nơi, mà ở cảm giác "đây đúng là chuyến đi của mình" — không giống bất kỳ ai khác. Bạn thích tự do lựa chọn, tự tạo dấu ấn riêng trong từng khoảnh khắc, và không ngại thử một cách trải nghiệm khác biệt. Kazei sẽ thiết kế một khung hành trình vừa đủ để bạn có điểm tựa, nhưng vẫn chừa đủ khoảng trống để bạn tự do sáng tạo nên phiên bản du lịch của riêng mình.'
     }
@@ -326,7 +326,7 @@
   const TRAVELER_BLEND = {
     nameVI: 'Nhà Du Hành Đa Sắc',
     nameEN: 'Traveler Blend',
-    icon: '<img src="images/blend.png" alt="Traveler Blend Icon" class="icon">',
+    icon: '<img src="quiz/images/blend.png" alt="Traveler Blend Icon" class="icon">',
     description:
       'Bạn không thuộc hẳn về một phong cách du lịch nào — và đó chính là điều đặc biệt ở bạn. Bạn có thể vừa háo hức khám phá một con phố lạ, vừa muốn dành cả buổi chiều chỉ để ngồi yên tận hưởng, rồi bất chợt đổi ý để làm điều gì đó hoàn toàn ngẫu hứng. Sự linh hoạt này giúp bạn dễ dàng thích nghi với nhiều kiểu hành trình khác nhau, tùy vào tâm trạng và bối cảnh lúc đó. Kazei sẽ thiết kế một hành trình cân bằng, đủ đa dạng để nuôi dưỡng mọi khía cạnh trong con người du lịch của bạn.'
   };
