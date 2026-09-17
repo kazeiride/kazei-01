@@ -790,20 +790,6 @@
       backgroundColor: '#ffffff',
       scale: 2,
       useCORS: true
-      /* ==========================================================================
-      LUCAS THÊM
-      ========================================================================== */
-      onclone: (clonedDoc) => {
-      const card = clonedDoc.querySelector('.result-card');
-
-      if (card) {
-      card.style.animation = 'none';
-      card.style.opacity = '1';
-      card.style.transform = 'none';
-      }
-    }
-
-
     })
       .then((canvas) => {
         const link = document.createElement('a');
