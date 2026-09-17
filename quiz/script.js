@@ -786,29 +786,44 @@ dom.btnDownload.addEventListener('click', () => {
   dom.btnDownload.disabled = true;
   dom.btnDownload.textContent = 'Đang tạo ảnh...';
 
+
+
+   
   html2canvas(dom.resultCard, {
-    backgroundColor: '#ffffff',
-    scale: 2,
-    useCORS: true,
-    onclone: (clonedDoc) => {
-      // Cho clone DOM có thời gian ổn định trước khi render
-      return new Promise(resolve => setTimeout(resolve, 500));
-    }
-  })
-    .then((canvas) => {
+  backgroundColor: '#ffffff',
+  scale: 2,
+  useCORS: true,
+  onclone: (clonedDoc) => {
+    // Cho clone DOM có thời gian ổn định trước khi render
+    return new Promise(resolve => setTimeout(resolve, 500));
+  }
+})
+  .then((canvas) => {
+    canvas.toBlob(blob => {
+      const url = URL.createObjectURL(blob);
       const link = document.createElement('a');
       link.download = 'kazei-travel-personality.png';
-      link.href = canvas.toDataURL('image/png');
+      link.href = url;
+
+      // Thử click để tải về (desktop sẽ hoạt động)
       link.click();
-    })
-    .catch(() => {
-      alert('Đã có lỗi khi tạo ảnh kết quả. Vui lòng thử lại.');
-    })
-    .finally(() => {
-      dom.btnDownload.disabled = false;
-      dom.btnDownload.textContent = 'Tải kết quả';
-    });
-});
+
+      // Fallback cho iOS Safari: mở ảnh trong tab mới
+      if (/iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream) {
+        const newWindow = window.open();
+        newWindow.document.write('<img src="' + url + '" />');
+      }
+
+      URL.revokeObjectURL(url);
+    }, 'image/png');
+  })
+  .catch(() => {
+    alert('Đã có lỗi khi tạo ảnh kết quả. Vui lòng thử lại.');
+  })
+  .finally(() => {
+    dom.btnDownload.disabled = false;
+    dom.btnDownload.textContent = 'Tải kết quả';
+  });
 
 
   /* ==========================================================================
