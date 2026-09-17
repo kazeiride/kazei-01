@@ -805,14 +805,15 @@ dom.btnDownload.addEventListener('click', () => {
       link.href = canvas.toDataURL('image/png');
       link.click();
 
-      // ✅ Bổ sung xử lý Blob cho iOS Safari
+      // ✅ Fallback cho iOS Safari: mở ảnh trong tab mới để người dùng lưu thủ công
       if (/iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream) {
-        canvas.toBlob(blob => {
-          const url = URL.createObjectURL(blob);
-          const newWindow = window.open();
-          newWindow.document.write('<img src="' + url + '" style="width:100%;height:auto;" />');
-          URL.revokeObjectURL(url);
-        }, 'image/png');
+        const dataUrl = canvas.toDataURL('image/png');
+        const newWindow = window.open();
+        if (newWindow) {
+          newWindow.document.write('<img src="' + dataUrl + '" style="width:100%;height:auto;" />');
+        } else {
+          alert('Trên iPhone/iPad, hãy nhấn giữ ảnh để lưu.');
+        }
       }
     })
     .catch(() => {
@@ -823,6 +824,7 @@ dom.btnDownload.addEventListener('click', () => {
       dom.btnDownload.textContent = 'Tải kết quả';
     });
 });
+
 
 
   /* ==========================================================================
