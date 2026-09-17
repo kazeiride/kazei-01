@@ -534,6 +534,7 @@ input:focus-visible {
   border-radius: 50%;
   background: var(--color-bg);
   margin-bottom: 18px;
+   opacity: 0;
 }
 
 .result-icon svg {
