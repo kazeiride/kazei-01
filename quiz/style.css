@@ -525,6 +525,7 @@ input:focus-visible {
   margin-bottom: 24px;
 }
 
+/*
 .result-icon {
   display: inline-flex;
   align-items: center;
@@ -536,6 +537,7 @@ input:focus-visible {
   margin-bottom: 18px;
    opacity: 0;
 }
+*/
 
 .result-icon svg {
   width: 120px;
