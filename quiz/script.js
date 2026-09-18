@@ -300,7 +300,7 @@
       essence: 'luôn muốn bước ra khỏi vùng quen thuộc để khám phá điều mới',
       icon: '<img src="images/explorer.png" alt="Explorer Icon" class="icon">',
       description:
-        'Bạn là người luôn muốn bước ra khỏi vùng an toàn để khám phá những điều mới mẻ. Với bạn, một chuyến đi đúng nghĩa là khi được đi bộ qua những con phố lạ, thử món ăn chưa từng nếm, và bắt chuyện với những người bạn chưa từng gặp. Bạn không ngại dậy sớm để đón bình minh, không ngại đi xa hơn một chút nếu điều đó đồng nghĩa với một trải nghiệm đáng nhớ. Bạn thích lịch trình đủ dày để không bỏ lỡ điều gì, nhưng vẫn giữ được sự tò mò để đón nhận những bất ngờ dọc đường. Với bạn, thành công của một chuyến đi được đo bằng số điều mới học được và những câu chuyện sẽ kể lại sau này. Kazei sẽ thiết kế một hành trình đủ phong phú để nuôi dưỡng sự tò mò không ngừng nghỉ của bạn.'
+        '"Tò mò", "Hiếu kỳ", "Ham khám phá", "Ưa trải nghiệm" là những từ mô tả về bạn. Một chuyến đi đáng nhớ đối với bạn là một chuyến đi được thử càng nhiều càng tốt: thử những món ăn chưa từng ăn, làm những điều chưa từng làm, trò chuyện với những người bạn mới. Bạn không ngại bước ra khỏi vùng an toàn của bản thân và thích lịch trình đủ dày để không bỏ lỡ điều gì. Với bạn, thành công của một chuyến đi được đo bằng số trải nghiệm mới và những câu chuyện có thể kể lại sau này. Kazei sẽ thiết kế một hành trình đủ phong phú để nuôi dưỡng sự tò mò không ngừng nghỉ của bạn!'
     },
     reflector: {
       key: 'reflector',
@@ -309,7 +309,7 @@
       essence: 'tìm kiếm sự bình yên và muốn sống chậm lại',
       icon: '<img src="images/reflector.png" alt="Reflector Icon" class="icon">',
       description:
-        'Bạn là người tìm đến du lịch không phải để chạy đua với thời gian, mà để tìm lại nhịp thở của chính mình. Một buổi sáng ngồi yên bên tách cà phê, ngắm nhìn thành phố thức giấc, đã đủ để bạn thấy trọn vẹn. Bạn không cần đi thật nhiều nơi, chỉ cần mỗi khoảnh khắc đều được sống chậm và không vội vã. Với bạn, một chuyến đi thành công là khi tâm trí được nghỉ ngơi thật sự, khi những lo toan thường ngày tạm được gác lại, và khi bạn cảm nhận được sự kết nối sâu sắc hơn với người đồng hành. Bạn thích những lịch trình có khoảng trống, để có thể chậm lại bất cứ khi nào cần. Kazei sẽ thiết kế một hành trình đủ nhẹ nhàng, đủ tĩnh lặng, để bạn thật sự được chữa lành sau mỗi chuyến đi.'
+        'Xin chào "người bạn thư giãn" của Kazei! Kazei có thể cảm thấy năng lượng an tĩnh của bạn từ xa luôn đó! Bạn là người điềm tĩnh, sâu sắc, tinh tế, bạn không thích chạy đua với bất kỳ điều gì. Một buổi sáng ngồi bên tách cà phê nóng, ngắm nhìn thành phố thức giấc đã đủ khiến bạn cảm thấy trọn vẹn. Với bạn, một chuyến đi thành công là khi tâm trí được nghỉ ngơi thật sự, khi những lo toan thường ngày tạm được gác lại, và khi bạn cảm nhận được sự kết nối sâu sắc hơn với chính mình. Bạn thích những lịch trình có khoảng nghỉ, để có thể chậm lại bất cứ khi nào cần. Kazei sẽ thiết kế một hành trình đủ nhẹ nhàng để bạn thật sự được chữa lành sau mỗi chuyến đi!'
     },
     creator: {
       key: 'creator',
@@ -318,7 +318,7 @@
       essence: 'thích tự do lựa chọn và tạo nên dấu ấn riêng',
       icon: '<img src="images/creator.png" alt="Creator Icon" class="icon">',
       description:
-        'Bạn là người thích tự viết nên câu chuyện du lịch của riêng mình, thay vì đi theo một khuôn mẫu có sẵn. Bạn thoải mái với sự thay đổi, thích những lịch trình đủ mở để có thể tùy hứng rẽ sang một hướng khác nếu cảm thấy phù hợp. Với bạn, một chuyến đi đáng nhớ không nằm ở việc đi được bao nhiêu nơi, mà ở cảm giác "đây đúng là chuyến đi của mình" — không giống bất kỳ ai khác. Bạn thích tự do lựa chọn, tự tạo dấu ấn riêng trong từng khoảnh khắc, và không ngại thử một cách trải nghiệm khác biệt. Kazei sẽ thiết kế một khung hành trình vừa đủ để bạn có điểm tựa, nhưng vẫn chừa đủ khoảng trống để bạn tự do sáng tạo nên phiên bản du lịch của riêng mình.'
+        'Bạn là người thích tự viết nên câu chuyện của riêng mình, thay vì đi theo một khuôn mẫu có sẵn. Bạn độc lập, tự chủ, sáng tạo, cá tính. Bạn thoải mái với sự thay đổi, thích những lịch trình đủ linh hoạt để có thể tùy hứng rẽ sang một hướng khác. Với bạn, một chuyến đi đáng nhớ là một chuyến đi "của riêng bạn", không giống bất kỳ ai khác! Bạn thích tự do lựa chọn, tự tạo dấu ấn riêng trong từng khoảnh khắc và không ngại thử một cách trải nghiệm khác biệt. Kazei sẽ thiết kế một khung hành trình vừa vặn để bạn có điểm tựa, nhưng vẫn chừa khoảng trống để bạn tự do sáng tạo nên hành trình của riêng mình!'
     }
   };
 
@@ -328,7 +328,7 @@
     nameEN: 'Traveler Blend',
     icon: '<img src="images/blend.png" alt="Traveler Blend Icon" class="icon">',
     description:
-      'Bạn không thuộc hẳn về một phong cách du lịch nào — và đó chính là điều đặc biệt ở bạn. Bạn có thể vừa háo hức khám phá một con phố lạ, vừa muốn dành cả buổi chiều chỉ để ngồi yên tận hưởng, rồi bất chợt đổi ý để làm điều gì đó hoàn toàn ngẫu hứng. Sự linh hoạt này giúp bạn dễ dàng thích nghi với nhiều kiểu hành trình khác nhau, tùy vào tâm trạng và bối cảnh lúc đó. Kazei sẽ thiết kế một hành trình cân bằng, đủ đa dạng để nuôi dưỡng mọi khía cạnh trong con người du lịch của bạn.'
+      'Bạn không thuộc hẳn về một phong cách du lịch nào cả, bạn linh hoạt, đa dạng, cởi mở, dễ thích nghi - đó chính là điều đặc biệt ở bạn. Bạn có thể vừa háo hức khám phá một con phố lạ, vừa muốn dành cả buổi chiều chỉ ngồi yên, rồi bất chợt đổi ý để làm điều gì đó hoàn toàn ngẫu hứng. Sự linh hoạt này giúp bạn dễ dàng thích nghi với nhiều kiểu hành trình khác nhau, tùy vào tâm trạng và bối cảnh lúc đó. Kazei sẽ thiết kế một hành trình cân bằng, đủ đa dạng để nuôi dưỡng mọi khía cạnh trong bạn nhé!'
   };
 
   /* ==========================================================================
@@ -562,11 +562,11 @@
 
     // --- Tiêu đề & mô tả của từng phần ---
     if (step.part === 1) {
-      dom.sectionTitle.textContent = 'Bạn là kiểu người du lịch nào?';
-      dom.sectionDesc.textContent = 'Hãy chọn phương án gần với bạn nhất.';
+      dom.sectionTitle.textContent = 'Bạn là kiểu tính cách du lịch nào?';
+      dom.sectionDesc.textContent = 'Hãy chọn phương án gần với bạn nhất nhe ^^';
     } else {
       dom.sectionTitle.textContent = 'Hiểu hơn về chuyến đi của bạn';
-      dom.sectionDesc.textContent = 'Còn vài câu nữa thôi.';
+      dom.sectionDesc.textContent = 'Còn vài câu nữa thôi cố lên cố lên ^^';
     }
 
     // --- Câu hỏi + đáp án ---
@@ -674,7 +674,7 @@
         primary.essence +
         ', nhưng đồng thời cũng ' +
         secondary.essence +
-        '. Chính sự kết hợp này khiến hành trình của bạn trở nên khó đoán và thú vị hơn — không hoàn toàn thuộc về một khuôn mẫu nào. Kazei sẽ thiết kế một hành trình cân bằng giữa hai chất trong con người bạn, đủ để vừa thoả mãn phần ' +
+        '. Chính sự kết hợp này khiến hành trình của bạn trở nên khó đoán và thú vị hơn: không hoàn toàn thuộc về một khuôn mẫu nào. Kazei sẽ thiết kế một hành trình cân bằng giữa hai chất trong con người bạn, đủ để vừa thoả mãn phần ' +
         primary.nameVI.toLowerCase() +
         ', vừa nuôi dưỡng phần ' +
         secondary.nameVI.toLowerCase() +
@@ -687,7 +687,7 @@
     }
 
     dom.resultCard.innerHTML =
-      '<p class="result-greeting">Xin chào, ' + escapeHTML(profile.name) + '.</p>' +
+      '<p class="result-greeting">Hế lô, ' + escapeHTML(profile.name) + '.</p>' +
       '<div class="result-badge">' +
         '<span class="result-icon">' + icon + '</span>' +
         '<h2 class="result-name-vi">' + escapeHTML(nameVI) + '</h2>' +
